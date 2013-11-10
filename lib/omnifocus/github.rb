@@ -55,7 +55,7 @@ module OmniFocus::Github
   end
 
   def process account, client
-    client.user_issues.each do |issue|
+    client.user_issues(options = { :filter => 'all' }).each do |issue|
       pr        = issue["pull_request"] && !issue["pull_request"]["diff_url"].nil?
       number    = issue["number"]
       url       = issue["html_url"]
